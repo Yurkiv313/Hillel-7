@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {% for group in groups %}
+            <li>Group names: {{ group.name }}, Curator: {{ group.curator.name }}.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
