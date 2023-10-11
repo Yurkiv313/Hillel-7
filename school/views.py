@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.contrib import messages
 
 from .forms import TeacherForm, GroupForm, StudentForm, StudentsGroupForm
 from .models import Teacher, Group, Student, StudentsGroup
@@ -18,12 +19,16 @@ def teacher_form(request):
 
 
 def teacher_edit(request, pk):
-    teacher = Teacher.objects.get(pk=pk)
+    teacher = get_object_or_404(Teacher, pk=pk)
     if request.method == "GET":
         form = TeacherForm(instance=teacher)
         return render(request, "teacher/teacher_edit.html", {"form": form})
     form = TeacherForm(request.POST, instance=teacher)
     if "delete" in request.POST:
+        groups = teacher.group_set.all()
+        if groups.exists():
+            error_message = f"Неможливо видалити вчителя, оскільки є прив'язані групи."
+            return render(request, 'teacher/teacher_error.html', {"error_message": error_message})
         teacher.delete()
         return redirect("teacher_list")
     if form.is_valid():
@@ -117,7 +122,7 @@ def student_group_form(request):
 
 
 def student_group_edit(request, pk):
-    student_group = StudentsGroup.objects.get(pk=pk)
+    student_group = get_object_or_404(StudentsGroup, pk=pk)
     if request.method == "GET":
         form = StudentsGroupForm(instance=student_group)
         return render(request, "student_group/student_group_edit.html", {"form": form})
