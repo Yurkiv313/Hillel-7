@@ -1,10 +1,8 @@
-from datetime import timezone
-
 from django import forms
 from django.core.exceptions import ValidationError
+from django.utils import timezone
 
-from .models import Teacher
-from .models import Group
+from .models import Teacher, Group, Student, StudentsGroup
 
 
 class TeacherForm(forms.ModelForm):
@@ -35,3 +33,26 @@ class GroupForm(forms.ModelForm):
         if Group.objects.filter(name=name).exists():
             raise ValidationError("Група з таким ім'ям вже існує.")
         return name
+
+
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ["name", "entry_year"]
+
+    def clean_entry_year(self):
+        entry_year = self.cleaned_data.get("entry_year")
+        current_year = 2023
+        if entry_year < current_year - 5 or entry_year > current_year:
+            raise forms.ValidationError(
+                "Рік вступу має бути в діапазоні від {} до {}".format(
+                    current_year - 5, current_year
+                )
+            )
+        return entry_year
+
+
+class StudentsGroupForm(forms.ModelForm):
+    class Meta:
+        model = StudentsGroup
+        fields = ["group", "student"]

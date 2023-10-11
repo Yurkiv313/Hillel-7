@@ -1,0 +1,22 @@
+<form method="post" class="form-group">
+    {% csrf_token %}
+    <div class="form-group col-md-12 mb-3">
+        <label for="{{ form.group.id }}">Group:</label>
+        <select id="{{ form.group.id }}" name="{{ form.group.name }}">
+        {% for value, label in form.fields.group.choices %}
+            <option value="{{ value }}"{% if form.group.value == value %} selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group col-md-12 mb-3">
+        <label for="{{ form.student.id }}">student:</label>
+        <select id="{{ form.student.id }}" name="{{ form.student.name }}">
+        {% for value, label in form.fields.student.choices %}
+            <option value="{{ value }}"{% if form.student.value == value %} selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+        </select>
+    </div>
+  <hr class="mb-4">
+    <input type="submit" value="Зберегти">
+</form>

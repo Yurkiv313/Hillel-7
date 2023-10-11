@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Studentgroup list</h1>
+    <ul>
+        {% for student_group in students_groups %}
+            <li>
+                <a href="{% url 'student_group_edit' student_group.id %}">ID {{ student_group.id }}</a>
+                {{ student_group.student.name }}  {{ student_group.group.name }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

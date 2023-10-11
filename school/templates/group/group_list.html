@@ -7,9 +7,11 @@
 <body>
     <ul>
         {% for group in groups %}
-            <li>Group names: {{ group.name }}, Curator: {{ group.curator.name }}.</li>
+            <li>
+                <a href="{% url 'group_edit' group.id %}">ID {{ group.id }}</a>
+                Назва групи: {{ group.name }}, Куратор: {{ group.curator.name }}
+            </li>
         {% endfor %}
     </ul>
 </body>
 </html>
-

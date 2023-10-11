@@ -7,7 +7,10 @@
 <body>
     <ul>
         {% for teacher in teachers %}
-            <li>{{ teacher.name }} {{ teacher.birth_date }} {{ teacher.subject }}</li>
+            <li>
+                <a href="{% url 'teacher_edit' teacher.id %}">ID {{ teacher.id }}</a>
+                ID: {{ teacher.id }} {{ teacher.name }} {{ teacher.birth_date }} {{ teacher.subject }}
+            </li>
         {% endfor %}
     </ul>
 </body>
