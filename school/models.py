@@ -20,6 +20,7 @@ class Group(models.Model):
 
 class Student(models.Model):
     name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=16, null=True)
     entry_year = models.IntegerField()
 
     def __str__(self):
@@ -29,3 +30,12 @@ class Student(models.Model):
 class StudentsGroup(models.Model):
     group = models.ForeignKey(Group, on_delete=models.PROTECT, to_field="id")
     student = models.ForeignKey(Student, on_delete=models.PROTECT, to_field="id")
+
+
+class RequestLog(models.Model):
+    path = models.CharField(max_length=255)
+    method = models.CharField(max_length=10)
+    ex_time = models.FloatField()
+
+    def __str__(self):
+        return f"Path: {self.path}, Method: {self.method}, Execution Time: {self.ex_time:} seconds"

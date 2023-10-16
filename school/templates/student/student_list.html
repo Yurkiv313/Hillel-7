@@ -9,7 +9,7 @@
         {% for student in students %}
             <li>
                 <a href="{% url 'student_edit' student.id %}">ID {{ student.id }}</a>
-                Name: {{ student.name }} Entry year: {{ student.entry_year }}
+                Name: {{ student.name }} Phone {{ student.phone }} Entry year: {{ student.entry_year }}
             </li>
         {% endfor %}
     </ul>

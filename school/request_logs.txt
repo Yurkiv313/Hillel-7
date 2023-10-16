@@ -1,0 +1,15 @@
+Path: /school/students/, Method: GET, Execution Time: 0.010299921035766602 seconds
+Path: /school/students/, Method: GET, Execution Time: 0.0072557926177978516 seconds
+Path: /school/students/, Method: GET, Execution Time: 0.0160672664642334 seconds
+Path: /school/students/, Method: GET, Execution Time: 0.02076101303100586 seconds
+Path: /school/students/, Method: GET, Execution Time: 0.026823997497558594 seconds
+Path: /school/student/, Method: GET, Execution Time: 0.014635086059570312 seconds
+Path: /, Method: GET, Execution Time: 0.009724140167236328 seconds
+Path: /favicon.ico, Method: GET, Execution Time: 0.0026938915252685547 seconds
+Path: /school/students/, Method: GET, Execution Time: 0.02378535270690918 seconds
+Path: /school/groups/, Method: GET, Execution Time: 0.007483243942260742 seconds
+Path: /school/groups/, Method: GET, Execution Time: 0.005810260772705078 seconds
+Path: /school/group/, Method: GET, Execution Time: 0.004160881042480469 seconds
+Path: /school/group/, Method: GET, Execution Time: 0.0037488937377929688 seconds
+Path: /school/group/, Method: POST, Execution Time: 0.0062122344970703125 seconds
+Path: /school/group/17, Method: GET, Execution Time: 0.018958091735839844 seconds

@@ -1,3 +1,4 @@
+import phonenumbers
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils import timezone
@@ -38,7 +39,17 @@ class GroupForm(forms.ModelForm):
 class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = ["name", "entry_year"]
+        fields = ["name", "phone", "entry_year"]
+
+    def clean_phone(self):
+        phone = self.cleaned_data["phone"]
+        if not phone:
+            raise ValidationError("Некоректний номер телефону")
+        try:
+            parsed_number = phonenumbers.parse(phone, "None")
+        except phonenumbers.NumberParseException as n:
+            raise forms.ValidationError(n.args[0])
+        return phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
 
     def clean_entry_year(self):
         entry_year = self.cleaned_data.get("entry_year")
