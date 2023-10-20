@@ -14,16 +14,18 @@ class LogMiddleware:
         ex_time = time.time() - start_time
         print("ex_time", ex_time)
 
-        path = '/Users/macbookair/Hillel-7/django_project/school/request_logs.txt'
+        path = "school/request_logs.txt"
 
-        with open(path, 'a') as file:
+        with open(path, "a") as file:
             file.write(
-                f"Path: {request.path}, Method: {request.method}, Execution Time: {ex_time} seconds\n")
+                f"Path: {request.path}, Method: {request.method}, Execution Time: {ex_time} seconds\n"
+            )
 
-        connection = connections['default']
+        connection = connections["default"]
         with connection.cursor() as cursor:
-            cursor.execute("INSERT INTO school_requestlog (path, method, ex_time) VALUES (%s, %s, %s)",
-                           [request.path, request.method, ex_time])
+            cursor.execute(
+                "INSERT INTO school_requestlog (path, method, ex_time) VALUES (%s, %s, %s)",
+                [request.path, request.method, ex_time],
+            )
 
         return response
-

@@ -13,3 +13,11 @@ Path: /school/group/, Method: GET, Execution Time: 0.004160881042480469 seconds
 Path: /school/group/, Method: GET, Execution Time: 0.0037488937377929688 seconds
 Path: /school/group/, Method: POST, Execution Time: 0.0062122344970703125 seconds
 Path: /school/group/17, Method: GET, Execution Time: 0.018958091735839844 seconds
+Path: /, Method: GET, Execution Time: 0.021035194396972656 seconds
+Path: /, Method: GET, Execution Time: 0.005859851837158203 seconds
+Path: /school/students/, Method: GET, Execution Time: 0.013713359832763672 seconds
+Path: /school/students/, Method: GET, Execution Time: 0.004196882247924805 seconds
+Path: /school/students/, Method: GET, Execution Time: 0.016080856323242188 seconds
+Path: /school/student/, Method: GET, Execution Time: 0.010776042938232422 seconds
+Path: /school/students/, Method: GET, Execution Time: 0.003773927688598633 seconds
+Path: /school/teachers/, Method: GET, Execution Time: 0.0045490264892578125 seconds

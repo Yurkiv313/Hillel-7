@@ -29,7 +29,9 @@ def teacher_edit(request, pk):
         groups = teacher.group_set.all()
         if groups.exists():
             error_message = f"Неможливо видалити вчителя, оскільки є прив'язані групи."
-            return render(request, 'teacher/teacher_error.html', {"error_message": error_message})
+            return render(
+                request, "teacher/teacher_error.html", {"error_message": error_message}
+            )
         teacher.delete()
         return redirect("teacher_list")
     if form.is_valid():

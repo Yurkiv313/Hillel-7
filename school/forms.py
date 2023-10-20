@@ -49,7 +49,9 @@ class StudentForm(forms.ModelForm):
             parsed_number = phonenumbers.parse(phone, "None")
         except phonenumbers.NumberParseException as n:
             raise forms.ValidationError(n.args[0])
-        return phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
+        return phonenumbers.format_number(
+            parsed_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL
+        )
 
     def clean_entry_year(self):
         entry_year = self.cleaned_data.get("entry_year")
